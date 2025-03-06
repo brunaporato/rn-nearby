@@ -28,7 +28,7 @@ export default function Home() {
         <Categories
           data={categories}
           selectedId={selectedCategory}
-          onSelectCategory={(id) => setSelectedCategory(id)}
+          onSelectCategory={setSelectedCategory}
         />
       )}
     </View>
