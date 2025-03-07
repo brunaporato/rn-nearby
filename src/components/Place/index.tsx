@@ -16,8 +16,8 @@ export interface PlaceProps {
     cover: string;
     description: string;
     id: string;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     name: string;
     phone: string;
 }
