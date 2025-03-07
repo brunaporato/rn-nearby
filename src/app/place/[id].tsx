@@ -1,13 +1,17 @@
+import { DetailsProps } from "@/components/Details";
 import { DetailsCover } from "@/components/DetailsCover";
 import { Loading } from "@/components/Loading";
-import { PlaceProps } from "@/components/Place";
 import { api } from "@/services/api";
-import { router, useLocalSearchParams } from "expo-router";
+import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 
+interface DataProps extends DetailsProps {
+  cover: string;
+}
+
 export default function Place() {
-  const [data, setData] = useState<PlaceProps>();
+  const [data, setData] = useState<DataProps>();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useLocalSearchParams();
 
@@ -35,9 +39,13 @@ export default function Place() {
     return <Loading />;
   }
 
+  if (!data) {
+    return <Redirect href="/home" />;
+  }
+
   return (
-    <View style={{ flex: 1, }}>
-      {data && <DetailsCover uri={data.cover} />}
+    <View style={{ flex: 1 }}>
+      <DetailsCover uri={data.cover} />
     </View>
   );
 }
