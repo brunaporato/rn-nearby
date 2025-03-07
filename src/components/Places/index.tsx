@@ -3,6 +3,7 @@ import { Place, PlaceProps } from "../Place";
 import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import { useRef } from "react";
 import { s } from "./styles";
+import { router } from "expo-router";
 
 interface IPlacesProps {
   data: PlaceProps[];
@@ -29,10 +30,15 @@ export function Places({ data }: IPlacesProps) {
       <BottomSheetFlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Place data={item} />}
+        renderItem={({ item }) => (
+          <Place
+            data={item}
+            onPress={() => router.navigate(`/place/${item.id}`)}
+          />
+        )}
         contentContainerStyle={s.content}
         ListHeaderComponent={() => (
-            <Text style={s.title}>Explore locais perto de você</Text>
+          <Text style={s.title}>Explore locais perto de você</Text>
         )}
         showsVerticalScrollIndicator={false}
       />
