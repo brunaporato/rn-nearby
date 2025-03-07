@@ -1,10 +1,10 @@
-import { DetailsProps } from "@/components/Details";
-import { DetailsCover } from "@/components/DetailsCover";
+import { Details, DetailsProps } from "@/components/PlaceScreen/Details";
+import { DetailsCover } from "@/components/PlaceScreen/DetailsCover";
 import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Alert, View } from "react-native";
 
 interface DataProps extends DetailsProps {
   cover: string;
@@ -46,6 +46,8 @@ export default function Place() {
   return (
     <View style={{ flex: 1 }}>
       <DetailsCover uri={data.cover} />
+
+      <Details data={data} />
     </View>
   );
 }

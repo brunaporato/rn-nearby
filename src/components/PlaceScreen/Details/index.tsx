@@ -1,0 +1,31 @@
+import { Text, View } from "react-native";
+import { s } from "./styles";
+
+export interface DetailsProps {
+  name: string;
+  description: string;
+  address: string;
+  phone: string;
+  coupons: number;
+  rules: {
+    id: string;
+    description: string;
+  }[];
+}
+
+interface IDetailsProps {
+  data: DetailsProps;
+}
+
+export function Details({ data }: IDetailsProps) {
+  return (
+    <View style={s.container}>
+      <Text style={s.name}>{data.name}</Text>
+      <Text style={s.description}>{data.description}</Text>
+
+      <View style={s.group}>
+        <Text style={s.title}>Informações</Text>
+      </View>
+    </View>
+  );
+}

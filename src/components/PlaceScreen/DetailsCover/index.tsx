@@ -1,6 +1,6 @@
 import { ImageBackground, View } from "react-native";
 import { s } from "./styles";
-import { Button } from "../Button";
+import { Button } from "../../Button";
 import { router } from "expo-router";
 import { IconArrowLeft } from "@tabler/icons-react-native";
 
