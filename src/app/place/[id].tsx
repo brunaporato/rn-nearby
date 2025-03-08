@@ -5,6 +5,7 @@ import { api } from "@/services/api";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, View } from "react-native";
+import { Coupon } from "@/components/PlaceScreen/Coupon";
 
 interface DataProps extends DetailsProps {
   cover: string;
@@ -48,6 +49,7 @@ export default function Place() {
       <DetailsCover uri={data.cover} />
 
       <Details data={data} />
+      <Coupon code="123456" />
     </View>
   );
 }
