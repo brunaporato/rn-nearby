@@ -4,7 +4,7 @@ import { Loading } from "@/components/Loading";
 import { api } from "@/services/api";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
-import { Alert, Modal, StatusBar, View } from "react-native";
+import { Alert, Modal, ScrollView, StatusBar, View } from "react-native";
 import { Coupon } from "@/components/PlaceScreen/Coupon";
 import { Button } from "@/components/Button";
 import { IconScan } from "@tabler/icons-react-native";
@@ -105,10 +105,12 @@ export default function Place() {
   return (
     <View style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" hidden={isCameraModalVisible} />
-      <DetailsCover uri={data.cover} />
 
-      <Details data={data} />
-      {coupon && <Coupon code={coupon} />}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <DetailsCover uri={data.cover} />
+        <Details data={data} />
+        {coupon && <Coupon code={coupon} />}
+      </ScrollView>
 
       <View style={{ padding: 32 }}>
         <Button onPress={handleOpenCamera}>
